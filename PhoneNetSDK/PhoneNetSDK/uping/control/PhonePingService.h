@@ -16,6 +16,8 @@
 + (instancetype)shareInstance;
 - (void)startPingHost:(NSString *)host packetCount:(int)count resultHandler:(NetPingResultHandler)handler;
 
+- (void)wp_startPingHost:(NSString *)host packetCount:(int)count resultHandler:(wp_NetPingResultHandler)handler;
+
 - (void)uStopPing;
 - (BOOL)uIsPing;
 

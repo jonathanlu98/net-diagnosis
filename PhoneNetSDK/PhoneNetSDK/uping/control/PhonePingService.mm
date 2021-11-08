@@ -15,6 +15,7 @@
 @property (nonatomic,strong) PhonePing *uPing;
 @property (nonatomic,strong) NSMutableDictionary *pingResDic;
 @property (nonatomic,copy,readonly) NetPingResultHandler pingResultHandler;
+@property (nonatomic,copy,readonly) wp_NetPingResultHandler wp_pingResultHandler;
 
 @end
 
@@ -114,6 +115,21 @@ static PhonePingService *ucPingservice_instance = NULL;
     
 }
 
+- (void)wp_startPingHost:(NSString *)host packetCount:(int)count resultHandler:(wp_NetPingResultHandler)handler
+{
+    if (_uPing) {
+        _uPing = nil;
+        _uPing = [[PhonePing alloc] init];
+
+    }else{
+        _uPing = [[PhonePing alloc] init];
+    }
+    _wp_pingResultHandler = handler;
+    _uPing.delegate = self;
+    [_uPing startPingHosts:host packetCount:count];
+    
+}
+
 #pragma mark-UCPingDelegate
 - (void)pingResultWithUCPing:(PhonePing *)ucPing pingResult:(PPingResModel *)pingRes pingStatus:(PhoneNetPingStatus)status
 {
@@ -125,7 +141,12 @@ static PhonePingService *ucPingservice_instance = NULL;
     }
     
     NSString *pingDetail = [NSString stringWithFormat:@"%d bytes form %@: icmp_seq=%d ttl=%d time=%.3fms",(int)pingRes.dateBytesLength,pingRes.IPAddress,(int)pingRes.ICMPSequence,(int)pingRes.timeToLive,pingRes.timeMilliseconds];
-    _pingResultHandler(pingDetail);
+    if (_pingResultHandler) {
+        _pingResultHandler(pingDetail);
+    }
+    if (_wp_pingResultHandler) {
+        _wp_pingResultHandler(pingDetail,pingRes);
+    }
 }
 
 

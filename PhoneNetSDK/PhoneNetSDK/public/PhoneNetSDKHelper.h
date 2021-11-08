@@ -9,6 +9,7 @@
 #ifndef PhoneNetSDKHelper_h
 #define PhoneNetSDKHelper_h
 #import "PNetModel.h"
+#import "PPingResModel.h"
 
 
 /**
@@ -33,6 +34,8 @@ typedef NS_ENUM(NSUInteger,PhoneNetSDKLogLevel)
 
 #pragma mark -ping callback
 typedef void(^NetPingResultHandler)(NSString *_Nullable pingres);
+
+typedef void(^wp_NetPingResultHandler)(NSString *_Nullable pingres, PPingResModel *_Nullable pingResModel);
 
 #pragma mark -tracert callback
 typedef void(^NetTracerouteResultHandler)(NSString *_Nullable tracertRes ,NSString *_Nullable destIp);

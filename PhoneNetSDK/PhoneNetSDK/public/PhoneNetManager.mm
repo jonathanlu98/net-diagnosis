@@ -85,6 +85,15 @@ static PhoneNetManager *sdkManager_instance = nil;
     [[PhonePingService shareInstance] startPingHost:host packetCount:count resultHandler:handler];
 }
 
+- (void)wp_netStartPing:(NSString *_Nonnull)host packetCount:(int)count pingResultHandler:(wp_NetPingResultHandler _Nonnull)handler
+{
+    if (!handler) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"no wp_pingResultHandler" userInfo:nil];
+        return;
+    }
+    [[PhonePingService shareInstance] wp_startPingHost:host packetCount:count resultHandler:handler];
+}
+
 
 - (void)netStartTraceroute:(NSString *_Nonnull)host tracerouteResultHandler:(NetTracerouteResultHandler _Nonnull)handler
 {

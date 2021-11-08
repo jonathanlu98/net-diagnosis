@@ -42,6 +42,8 @@
  */
 - (void)netStartPing:(NSString *_Nonnull)host packetCount:(int)count pingResultHandler:(NetPingResultHandler _Nonnull)handler;
 
+- (void)wp_netStartPing:(NSString *_Nonnull)host packetCount:(int)count pingResultHandler:(wp_NetPingResultHandler _Nonnull)handler;
+
 
 /*!
  @description
