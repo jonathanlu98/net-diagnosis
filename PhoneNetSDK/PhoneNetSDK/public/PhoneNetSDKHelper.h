@@ -10,7 +10,7 @@
 #define PhoneNetSDKHelper_h
 #import "PNetModel.h"
 #import "PPingResModel.h"
-
+#import "PReportPingModel.h"
 
 /**
  @brief This is an enumerated type that defines the log level
@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger,PhoneNetSDKLogLevel)
 #pragma mark -ping callback
 typedef void(^NetPingResultHandler)(NSString *_Nullable pingres);
 
-typedef void(^wp_NetPingResultHandler)(NSString *_Nullable pingres, PPingResModel *_Nullable pingResModel);
+typedef void(^wp_NetPingResultHandler)(NSString *_Nullable pingres, PPingResModel *_Nullable pingResModel, PReportPingModel *_Nullable reportPingModel);
 
 #pragma mark -tracert callback
 typedef void(^NetTracerouteResultHandler)(NSString *_Nullable tracertRes ,NSString *_Nullable destIp);

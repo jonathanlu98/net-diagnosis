@@ -86,7 +86,12 @@ static PhonePingService *ucPingservice_instance = NULL;
         PReportPingModel *reportPingModel = [PReportPingModel uReporterPingmodelWithDict:dict];
         
         NSString *pingSummary = [NSString stringWithFormat:@"%d packets transmitted , loss:%d , delay:%0.3fms , ttl:%d",reportPingModel.totolPackets,reportPingModel.loss,reportPingModel.delay,reportPingModel.ttl];
-        self.pingResultHandler(pingSummary);
+        if (_pingResultHandler) {
+            _pingResultHandler(pingSummary);
+        }
+        if (_wp_pingResultHandler) {
+            _wp_pingResultHandler(pingSummary,pingItem,reportPingModel);
+        }
         
         [self removePingResFromPingResContainerWithHostName:host];
     }
@@ -145,7 +150,7 @@ static PhonePingService *ucPingservice_instance = NULL;
         _pingResultHandler(pingDetail);
     }
     if (_wp_pingResultHandler) {
-        _wp_pingResultHandler(pingDetail,pingRes);
+        _wp_pingResultHandler(pingDetail,pingRes,nil);
     }
 }
 
