@@ -85,7 +85,7 @@ static PhonePingService *ucPingservice_instance = NULL;
 //            NSLog(@"dict----res:%@, pingRes:%@",dict,self.pingResDic);
         PReportPingModel *reportPingModel = [PReportPingModel uReporterPingmodelWithDict:dict];
         
-        NSString *pingSummary = [NSString stringWithFormat:@"%d packets transmitted , loss:%d , delay:%0.3fms , ttl:%d",reportPingModel.totolPackets,reportPingModel.loss,reportPingModel.delay,reportPingModel.ttl];
+        NSString *pingSummary = [NSString stringWithFormat:@"%d packets transmitted , %d received, %d%% packet loss , time:%0.3fms , ttl:%d",reportPingModel.totolPackets,reportPingModel.receivedPackets,reportPingModel.loss,reportPingModel.delay,reportPingModel.ttl];
         if (_pingResultHandler) {
             _pingResultHandler(pingSummary);
         }

@@ -19,6 +19,7 @@
         self.ttl   = [dict[@"ttl"] intValue];
         self.src_ip = dict[@"src_ip"];
         self.dst_ip = dict[@"dst_ip"];
+        self.receivedPackets = [dict[@"receivedPackets"] intValue];
     }
     return self;
 }
@@ -30,7 +31,7 @@
 
 - (NSDictionary *)objConvertToDict
 {
-    return @{@"loss":@(self.loss),@"delay":@(self.delay),@"src_ip":self.src_ip,@"dst_ip":self.dst_ip,@"ttl":@(self.ttl)};
+    return @{@"loss":@(self.loss),@"delay":@(self.delay),@"src_ip":self.src_ip,@"dst_ip":self.dst_ip,@"ttl":@(self.ttl),@"receivedPackets":@(self.receivedPackets)};
 }
 
 - (NSString *)description

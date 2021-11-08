@@ -16,6 +16,7 @@
 @property (nonatomic,assign) int ttl;
 @property (nonatomic,copy)   NSString *src_ip;
 @property (nonatomic,copy)   NSString *dst_ip;
+@property (nonatomic, assign) int receivedPackets;
 
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

@@ -49,7 +49,7 @@
         address = @"null";
     }
     
-    NSDictionary *dict = @{@"src_ip":address,@"dst_ip":dst,@"totolPackets":[NSNumber numberWithInt:allPacketCount], @"loss":[NSNumber numberWithFloat:lossPercent],@"delay":[NSNumber  numberWithDouble:avgTime],@"ttl":[NSNumber numberWithLong:avgTTL]};
+    NSDictionary *dict = @{@"src_ip":address,@"dst_ip":dst,@"totolPackets":[NSNumber numberWithInt:allPacketCount], @"loss":[NSNumber numberWithFloat:lossPercent],@"delay":[NSNumber  numberWithDouble:avgTime],@"ttl":[NSNumber numberWithLong:avgTTL],@"receivedPackets":[NSNumber numberWithInteger:receivedCount]};
     return dict;
     
     return NULL;
