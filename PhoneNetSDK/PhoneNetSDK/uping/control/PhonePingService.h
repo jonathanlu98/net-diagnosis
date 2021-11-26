@@ -20,5 +20,6 @@
 
 - (void)uStopPing;
 - (BOOL)uIsPing;
+- (void)uClearPingOutput;
 
 @end

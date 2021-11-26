@@ -61,6 +61,9 @@
 - (BOOL)isDoingPing;
 
 
+- (void)cleanPreviousPing;
+
+
 #pragma mark - About traceroute
 /*!
  @description

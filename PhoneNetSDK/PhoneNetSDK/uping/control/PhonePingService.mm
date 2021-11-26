@@ -58,6 +58,11 @@ static PhonePingService *ucPingservice_instance = NULL;
     return [self.uPing isPing];
 }
 
+- (void)uClearPingOutput
+{
+    [self.pingResDic removeAllObjects];
+}
+
 - (void)addPingResToPingResContainer:(PPingResModel *)pingItem andHost:(NSString *)host
 {
     if (host == NULL || pingItem == NULL) {

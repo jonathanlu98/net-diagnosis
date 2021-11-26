@@ -71,6 +71,11 @@ static PhoneNetManager *sdkManager_instance = nil;
     [[PhonePingService shareInstance] uStopPing];
 }
 
+- (void)cleanPreviousPing
+{
+    [[PhonePingService shareInstance] uClearPingOutput];
+}
+
 - (BOOL)isDoingPing
 {
     return [[PhonePingService shareInstance] uIsPing];
